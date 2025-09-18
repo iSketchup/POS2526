@@ -1,0 +1,92 @@
+# .gitignore for a typical C# (.NET) project
+
+# Ignore build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+
+# MonoDevelop
+*.pidb
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DotCover
+*.dotCover
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*.dll
+*.exe
+*.pdb
+*.cache
+*.dbmdl
+*.bak
+*.backup
+*.publishsettings
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+
+# NPM Packages
+node_modules/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# TFS
+$tf/
+
+# ReSharper
+*.DotSettings.user
+
+# JetBrains Rider
+.idea/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Others
+*.orig
+
+# VS Code directories
+.vscode/
+
+# Mac OS files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build directories
+build/
