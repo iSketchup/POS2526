@@ -1,93 +1,54 @@
-# .gitignore for a typical C# (.NET) project
-
-# Ignore build results
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-*.log
-
-# User-specific files
-*.suo
+# Ignore Visual Studio temporary files, build results, and .vs folder
+.vs/
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
-*.swp
 
-# MonoDevelop
-*.pidb
-*.userprefs
+# Ignore build output
+bin/
+obj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
 
-# Rider
-.idea/
-*.sln.iml
-
-# Visual Studio Code
-.vscode/
-.vs/
-
-# ASP.NET Scaffolding
-ScaffoldingReadMe.txt
-
-# DotCover
-*.dotCover
-
-# StyleCop
-StyleCopReport.xml
-
-# Files built by Visual Studio
-*.dll
-*.exe
-*.pdb
-*.cache
-*.dbmdl
-*.bak
-*.backup
-*.publishsettings
-
-# NuGet Packages
+# Ignore NuGet packages
 *.nupkg
-# The packages folder can be ignored because of Package Restore
-**/packages/*
-!**/packages/build/
-!**/packages/repositories.config
+packages/
+*.snupkg
 
-# NPM Packages
+# Ignore Visual Studio Code workspace settings
+.vscode/
+
+# Ignore other IDE directories
+.idea/
+
+# Ignore test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore publish output
+publish/
+out/
+
+# Ignore node_modules (for JS/TS projects)
 node_modules/
 
-# Visual Studio profiler
-*.psess
-*.vsp
-*.vspx
-*.sap
-
-# TFS
-$tf/
-
-# ReSharper
-*.DotSettings.user
-
-# JetBrains Rider
-.idea/
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Others
-*.orig
-
-# VS Code directories
-.vscode/
-
-# Mac OS files
+# Ignore Mac system files
 .DS_Store
 
-# Temporary files
-*.tmp
-*.temp
+# Ignore Windows system files
+Thumbs.db
 
-# Build directories
-build/
+# Ignore environment & config files
+.env
+*.local.json
+
+# Ignore ReSharper/JetBrains Rider
+*.DotSettings.user
+
+# Ignore other files you don't want in git
+*.log
+*.tmp
