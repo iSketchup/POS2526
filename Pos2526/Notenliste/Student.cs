@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Notenliste
+﻿namespace Notenliste
 {
     public class Student
     {
+        private uint id;
+
+        public uint ID
+        {
+
+            get {
+
+                return id; 
+            }
+
+            set {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("ID < 0");
+                id = value; 
+            }
+        }
+
     }
 }
