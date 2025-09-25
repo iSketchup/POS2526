@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Notenliste
+﻿namespace Notenliste
 {
-    class StudentCol
+    public class StudentCol
     {
+        private List<Student> students = new List<Student>();
+    
+
     }
 }
