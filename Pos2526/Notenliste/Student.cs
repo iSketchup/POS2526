@@ -7,17 +7,45 @@
         public uint ID
         {
 
-            get {
+            get
+            {
 
-                return id; 
+                return id;
             }
 
-            set {
+            set
+            {
                 if (value < 0)
-                    throw new ArgumentOutOfRangeException("ID < 0");
-                id = value; 
+                    throw new ArgumentOutOfRangeException($"ID < 0. Value = {value}");
+
+                id = value;
             }
         }
+
+            private string firstName;
+
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                ArgumentOutOfRangeException.ThrowIfNullOrEmpty(value);
+
+                firstName = value;
+            }
+        }
+        private string lastName;
+        public string LastName
+        {
+            get => lastName;
+            set
+            {
+                ArgumentOutOfRangeException.ThrowIfNullOrEmpty(value);
+
+                lastName = value;
+            }
+        }
+
 
     }
 }
