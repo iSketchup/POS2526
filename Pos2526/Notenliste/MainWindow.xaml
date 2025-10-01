@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
+        <DockPanel>
+            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Left"  Width="100">
+                <Button x:Name="ButtonAdd" Content="Add" Padding="5" Margin="10" Click="ButtonAdd_Click" />
+                <Button x:Name="ButtonSave" Content="Save" Padding="5" Margin="10" Click="ButtonSave_Click" />
+                <Button x:Name="ButtonLoad" Content="Load" Padding="5" Margin="10" Click="ButtonLoad_Click" />
+            </StackPanel>
+
+            <ListView x:Name="LvStudents" />
+
+        </DockPanel>
 
     </Grid>
 </Window>

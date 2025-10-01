@@ -16,8 +16,41 @@ namespace Notenliste;
 /// </summary>
 public partial class MainWindow : Window
 {
+
+    public StudentCol studentCol;
     public MainWindow()
     {
         InitializeComponent();
+
+        studentCol = new StudentCol();
+
+    }
+
+    private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+    {
+
+        WindowStudent inputwindow = new();
+
+        if (inputwindow.ShowDialog() == true)
+        {
+            studentCol.Add(inputwindow.student);
+
+            studentCol.UpdateListView(LvStudents);
+        }
+
+    }
+
+    private void ButtonSave_Click(object sender, RoutedEventArgs e)
+    {
+        studentCol.Save();
+
+        studentCol.UpdateListView(LvStudents);
+    }
+
+    private void ButtonLoad_Click(object sender, RoutedEventArgs e)
+    {
+        studentCol.Load();
+
+        studentCol.UpdateListView(LvStudents);
     }
 }
