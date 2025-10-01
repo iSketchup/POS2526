@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Notenliste
 {
-    class GradeCol
+
+    public class GradeCol
     {
+    public List<Grade> Grades = [];
+
+    
     }
 }
