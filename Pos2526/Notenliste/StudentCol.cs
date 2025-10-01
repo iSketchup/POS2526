@@ -11,11 +11,7 @@ namespace Notenliste
         public ReadOnlyCollection<Student> Students { get => students.AsReadOnly(); }
 
 
-        public StudentCol()
-        {
-
-
-        }
+        public StudentCol() { }
 
         public void Add(Student student)
         {
@@ -23,7 +19,7 @@ namespace Notenliste
             CheckID();
         }
 
-        public void remove(int index)
+        public void Remove(int index)
         {
             students.RemoveAt(index);
             CheckID();
@@ -38,7 +34,7 @@ namespace Notenliste
         {
             for (int i = 0; i < students.Count; i++)
             {
-                students[i].ID = i+1;
+                students[i].ID = i + 1;
             }
         }
 
@@ -57,12 +53,12 @@ namespace Notenliste
             this.students.Clear();
 
             using StreamReader reader = new("StudentCol.csv");
-            
-                while (!reader.EndOfStream)
-                {
-                    this.Add(Student.DeserializeFromCSV(reader.ReadLine()));
-                }
-            
+
+            while (!reader.EndOfStream)
+            {
+                this.Add(Student.DeserializeFromCSV(reader.ReadLine()));
+            }
+
         }
     }
 }

@@ -33,7 +33,7 @@ public partial class MainWindow : Window
 
         if (inputwindow.ShowDialog() == true)
         {
-            studentCol.Add(inputwindow.student);
+            studentCol.Add(inputwindow.Student);
 
             studentCol.UpdateListView(LvStudents);
         }
