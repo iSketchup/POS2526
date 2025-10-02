@@ -53,4 +53,28 @@ public partial class MainWindow : Window
 
         studentCol.UpdateListView(LvStudents);
     }
+
+    private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+    {
+        int index = LvStudents.SelectedIndex;
+
+        if (index == -1)
+            return;
+
+        studentCol.Remove(index);
+
+        studentCol.UpdateListView(LvStudents);
+    }
+
+    private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+    {
+        int index = LvStudents.SelectedIndex;
+
+        if (index == -1)
+            return;
+
+        studentCol.Edit(index);
+
+        studentCol.UpdateListView(LvStudents);
+    }
 }

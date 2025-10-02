@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Notenliste
+﻿namespace Notenliste
 {
 
     public class GradeCol
     {
-    public List<Grade> Grades = [];
+        public List<Grade> Grades = [];
 
-    
+
+
+        public GradeCol()
+        {
+
+        }
     }
 }

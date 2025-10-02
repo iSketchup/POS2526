@@ -25,6 +25,21 @@ namespace Notenliste
             CheckID();
         }
 
+        public void Edit(int index)
+        {
+
+            Student student = students[index];
+
+            WindowStudent inputwindow = new(student.FirstName, student.LastName);
+
+            if (inputwindow.ShowDialog() == true)
+            {
+                student.FirstName = inputwindow.Student.FirstName;
+                student.LastName = inputwindow.Student.LastName;
+            }
+        }
+
+
         public void UpdateListView(ListView listView)
         {
             listView.ItemsSource = Students;

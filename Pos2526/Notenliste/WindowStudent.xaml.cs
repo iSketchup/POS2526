@@ -10,10 +10,16 @@ namespace Notenliste
     {
 
 
-        public Student Student { get; private set; }
+        public Student Student { get; private set; } = null;
         public WindowStudent()
         {
             InitializeComponent();
+        }
+        public WindowStudent(string firstname, string lastname)
+        {
+            InitializeComponent();
+            TbFirstname.Text = firstname;
+            TbLastname.Text = lastname;
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
@@ -22,12 +28,13 @@ namespace Notenliste
             TbLastname.Background = null;
 
 
-            string firstname = TbFirstname.Text;
-            string lastname = TbLastname.Text;
+            string firstname = TbFirstname.Text.Trim();
+            string lastname = TbLastname.Text.Trim();
 
             if (String.IsNullOrEmpty(firstname))
             {
                 TbFirstname.Background = Brushes.LightSalmon;
+                TbFirstname.ToolTip = "Darf nicht Leer sein";
                 return;
             }
 
@@ -35,6 +42,7 @@ namespace Notenliste
             if (String.IsNullOrEmpty(lastname))
             {
                 TbLastname.Background = Brushes.LightSalmon;
+                TbLastname.ToolTip = "Darf nicht Leer sein";
                 return;
             }
 
