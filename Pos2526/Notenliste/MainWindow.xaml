@@ -12,6 +12,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto" MinWidth="200"/>
             <ColumnDefinition Width="auto" MinWidth="200"/>
+            <ColumnDefinition Width="auto" MinWidth="200"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -39,6 +40,7 @@
             <ListView x:Name="LvGrades" SelectionChanged="LvGrades_SelectionChanged"/>
             </StackPanel>
             
+        
 
 
     </Grid>
