@@ -1,4 +1,6 @@
-﻿namespace Notenliste
+﻿using System.Collections.ObjectModel;
+
+namespace Notenliste
 {
     public class Student
     {
@@ -46,10 +48,12 @@
             }
         }
 
-        // TODO: Add Grae Collection
+        public GradeCol Grades = new();
+
 
 
         public Student() { }
+
         /// <summary>
         /// Erstellt ein neues Sudent Obj mit dem übergebenen WErten
         /// </summary>
@@ -64,13 +68,19 @@
         }
         public string SerializeToCSV()
         {
-            return $"{firstName} ; {lastName}";
+            string safestring = $"{firstName} | {lastName}";
+
+            safestring += Grades.SerializeToCsv();
+
+            return safestring;
         }
 
         public static Student DeserializeFromCSV(string csv)
         {
-            string[] parts = csv.Split(';');
+            string[] parts = csv.Split('|');
             Student student = new(parts[0].Trim(), parts[1].Trim());
+
+            student.Grades = GradeCol.DeserializeFromCsv(parts);
             return student;
 
         }

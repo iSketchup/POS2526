@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Notenliste"
         mc:Ignorable="d"
         Title="WindowStudent" Height="450" Width="800">
@@ -18,11 +19,12 @@
         </Grid.RowDefinitions>
 
         <Label Content="First Name:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="TbFirstname" Grid.Row="0" Grid.Column="1" FontSize="30" TextAlignment="Left" Margin="10"/>
+        
         <Label Content="Last Name:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Grid.Row="1" Grid.Column="0"/>
-        <TextBox x:Name="TbFirstname" Grid.Row="0" Grid.Column="1"/>
-        <TextBox x:Name="TbLastname" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="TbLastname" Grid.Row="1" Grid.Column="1" FontSize="30" TextAlignment="Left" Margin="10"/>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <Button x:Name="BtnOk" Content="OK" IsDefault="True" FontSize="30" Margin="10" Padding="50 5 50 5" Click="BtnOk_Click"/>
             <Button x:Name="BtnCancel" Content="Cancel" IsCancel="True" FontSize="30" Margin="10" Padding="50 5 50 5"/>
         </StackPanel>

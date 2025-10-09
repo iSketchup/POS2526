@@ -1,13 +1,11 @@
 ﻿namespace Notenliste
 {
+
+
+
     public class Grade
     {
-        public enum Subjects
-        {
-            Math,
-            Pos,
-            DBI
-        }
+
 
         public int Value;
         public Subjects Subject;
@@ -19,7 +17,28 @@
             Value = value;
             Subject = sub;
             Date = date;
-        
+            
+            
+        }
+
+        public string SerializeToCsv()
+        {
+            return $"|{Value};{(int)Subject};{Date}";
+        }
+        public static Grade DeserializeFromCSV(string input)
+        {
+            string[] parts = input.Split(";");
+
+            int value = int.Parse(parts[0]);
+            Subjects sub = (Subjects)int.Parse(parts[1]);
+            DateTime date = DateTime.Parse(parts[2]);
+
+            return new(value, sub, date);
+        }
+
+        public override string ToString()
+        {
+            return $"{Value} | {(Subject)}, {Date.Day}.{Date.Month}.{Date.Year}";
         }
 
     }

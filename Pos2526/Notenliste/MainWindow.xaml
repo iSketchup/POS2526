@@ -7,17 +7,33 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
         <DockPanel>
-            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Left"  Width="100">
-                <Button x:Name="ButtonAdd" Content="Add" Padding="5" Margin="10" Click="ButtonAdd_Click" />
+            <StackPanel Orientation="Vertical" Margin="10" HorizontalAlignment="Left"  Width="100" Grid.Row="0" Grid.Column="0">
+                <Button x:Name="ButtonAdd" Content="Add Student" Padding="5" Margin="10" Click="ButtonAdd_Click" />
+                <Button x:Name="ButtonAddGrade" Content="Add Grade" Padding="5" Margin="10" Click="ButtonAddGrade_Click"  />
                 <Button x:Name="ButtonDelete" Content="Delete" Padding="5" Margin="10" Click="ButtonDelete_Click" />
                 <Button x:Name="ButtonEdit" Content="Edit" Padding="5" Margin="10" Click="ButtonEdit_Click" />
                 <Button x:Name="ButtonSave" Content="Save" Padding="5" Margin="10" Click="ButtonSave_Click" />
                 <Button x:Name="ButtonLoad" Content="Load" Padding="5" Margin="10" Click="ButtonLoad_Click" />
             </StackPanel>
 
-            <ListView x:Name="LvStudents" />
+            <ListView x:Name="LvStudents" Grid.Row="0" Grid.Column="1" SelectionChanged="LvStudents_SelectionChanged"/>
+            
+            
+            <ListView x:Name="LvGrades" Grid.Row="0" Grid.Column="3"/>
 
         </DockPanel>
 
