@@ -1,14 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Notenliste;
 
@@ -18,60 +9,15 @@ namespace Notenliste;
 public partial class MainWindow : Window
 {
 
-    public StudentCol studentCol;
+    private StudentCol studentCol;
+
+    private bool EditingGrade = false;
     public MainWindow()
     {
         InitializeComponent();
 
         studentCol = new StudentCol();
 
-    }
-
-    private void ButtonAdd_Click(object sender, RoutedEventArgs e)
-    {
-
-        WindowStudent inputwindow = new();
-
-        if (inputwindow.ShowDialog() == true)
-        {
-            studentCol.Add(inputwindow.Student);
-
-            studentCol.UpdateListView(LvStudents);
-        }
-
-    }
-
-    private void ButtonAddGrade_Click(object sender, RoutedEventArgs e)
-    {
-        Gradepicker inputwindow = new();
-
-        if (inputwindow.ShowDialog() == true)
-        {
-            int index = LvStudents.SelectedIndex;
-            Grade grade = inputwindow.grade;
-
-            if (index == -1)
-                return;
-
-
-            studentCol.Students[index].Grades.Add(grade);
-
-            GradeviewChanged();
-
-
-        }
-    }
-
-    private void GradeviewChanged()
-    {
-        int index = LvStudents.SelectedIndex;
-
-        if (index == -1){
-            LvGrades.ItemsSource = null;
-            return;
-        }
-
-        LvGrades.ItemsSource = studentCol.Students[index].Grades.Grades; ;
     }
 
     private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -88,6 +34,55 @@ public partial class MainWindow : Window
         studentCol.UpdateListView(LvStudents);
     }
 
+
+    private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+    {
+        if (!EditingGrade)
+        {
+            WindowStudent inputwindow = new();
+
+            if (inputwindow.ShowDialog() == true)
+            {
+                studentCol.Add(inputwindow.Student);
+
+                studentCol.UpdateListView(LvStudents);
+            }
+        }
+        else
+        {
+            Gradepicker inputwindow = new();
+            int index = LvStudents.SelectedIndex;
+
+            if (index == -1)
+            {
+                return;
+            }
+
+
+            if (inputwindow.ShowDialog() == true)
+            {
+
+                Grade grade = inputwindow.grade;
+                studentCol.Students[index].Grades.Add(grade);
+
+                GradeviewChanged();
+            }
+        }
+    }
+
+    private void GradeviewChanged()
+    {
+        int index = LvStudents.SelectedIndex;
+
+        if (index == -1)
+        {
+            LvGrades.ItemsSource = null;
+            return;
+        }
+
+        LvGrades.ItemsSource = studentCol.Students[index].Grades.Grades; ;
+    }
+
     private void ButtonDelete_Click(object sender, RoutedEventArgs e)
     {
         int index = LvStudents.SelectedIndex;
@@ -95,12 +90,27 @@ public partial class MainWindow : Window
         if (index == -1)
             return;
 
-        studentCol.Remove(index);
+        if (!EditingGrade)
+        {
+            studentCol.Remove(index);
 
-        studentCol.UpdateListView(LvStudents);
-        
-        GradeviewChanged();
+            studentCol.UpdateListView(LvStudents);
+
+            GradeviewChanged();
+        }
+        else
+        {
+            int indexG = LvGrades.SelectedIndex;
+
+            if (indexG == -1)
+                return;
+
+            studentCol.Students[index].Grades.RemoveAt(indexG);
+
+            GradeviewChanged();
+        }
     }
+
 
     private void ButtonEdit_Click(object sender, RoutedEventArgs e)
     {
@@ -108,15 +118,54 @@ public partial class MainWindow : Window
 
         if (index == -1)
             return;
+        if (!EditingGrade)
+        {
+            studentCol.Edit(index);
 
-        studentCol.Edit(index);
+            studentCol.UpdateListView(LvStudents);
+        }
+        else
+        {
 
-        studentCol.UpdateListView(LvStudents);
+            int indexG = LvGrades.SelectedIndex;
+
+            if (indexG == -1)
+                return;
+
+
+            studentCol.Students[index].Grades.Edit(indexG);
+
+            GradeviewChanged();
+
+
+
+        }
+
     }
 
     private void LvStudents_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         studentCol.UpdateListView(LvStudents);
         GradeviewChanged();
+
+        TbEditingMode.IsChecked = false;
+    }
+    private void TbEditingMode_Checked(object sender, RoutedEventArgs e)
+    {
+        EditingGrade = true;
+        TbEditingMode.Content = "Editing Mode: Grade";
+
+    }
+
+    private void TbEditingMode_Unchecked(object sender, RoutedEventArgs e)
+    {
+
+        EditingGrade = false;
+        TbEditingMode.Content = "Editing Mode: Student";
+    }
+
+    private void LvGrades_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        TbEditingMode.IsChecked = true;
     }
 }

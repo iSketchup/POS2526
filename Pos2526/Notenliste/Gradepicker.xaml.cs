@@ -27,13 +27,27 @@ namespace Notenliste
             CbGrade.ItemsSource = new[] { 1, 2, 3, 4, 5, 6 };
 
         }
+
+        public Gradepicker(int value, Subjects subject, DateTime date)
+        {
+
+            InitializeComponent();
+            CbSubject.ItemsSource = Enum.GetValues(typeof(Subjects));
+            CbGrade.ItemsSource = new[] { 1, 2, 3, 4, 5, 6 };
+
+            CbGrade.SelectedIndex = value -1;
+            CbSubject.SelectedIndex = ((int)subject);
+            DpDate.SelectedDate = date;
+
+        }
+
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
             DateTime? Date = DpDate.SelectedDate;
 
             if (Date == null)
                 return;
-
+            //TODO: rot machen tooltip
 
 
 

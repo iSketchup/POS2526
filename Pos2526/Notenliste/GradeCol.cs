@@ -40,5 +40,23 @@ namespace Notenliste
 
             return grades;
         }
+
+        public void RemoveAt(int index)
+        {
+            grades.RemoveAt(index);
+        }
+
+        internal void Edit(int index)
+        {
+            Grade gradecur = Grades[index];
+
+            Gradepicker inputwindow = new(gradecur.Value, gradecur.Subject, gradecur.Date);
+            if (inputwindow.ShowDialog() == true)
+            {
+                Grade grade = inputwindow.grade;
+
+                grades[index] = grade;
+            }
+        }
     }
 }
