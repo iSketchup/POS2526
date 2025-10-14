@@ -52,3 +52,4 @@ Thumbs.db
 # Ignore other files you don't want in git
 *.log
 *.tmp
+/Pos2526/Abgaben
