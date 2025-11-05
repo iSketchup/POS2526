@@ -10,15 +10,21 @@ namespace InheritanceBeginnings
 {
     public class Character
     {
-        public String Name { get; set; }
-        private int Level { get; set; }
+        private String Name { get; set; }
+        protected int Level { get; set; }
 
-        private Skilltree Skilltree;
+        protected Skilltree Skilltree;
 
-        public  String Hp { get; set; }
+        protected  String Hp { get; set; }
+
+
+        protected int BaseDmg { get; set; }
+
+
         public Character(string Name)
         {
             this.Name = Name;
+            BaseDmg = 10;
         }
 
         public void Move(Vector2 direction)
@@ -26,25 +32,34 @@ namespace InheritanceBeginnings
 
         }
 
-        public void Attack(int enemyId)
+        public int BaseAttack()
         {
-
+            return BaseDmg;
         }
 
         public void ChangeXp(int xp)
         {
-
+            Level += xp;
         }
 
     }
 
     public class Fighter : Character 
     {
-        public bool isRaging; 
+        public bool isRaging {  get; set; }
+        public int Strength { get; set;}
+        public int WeaponDamage { get; set;}
 
         public Fighter(string name) : base(name)
         {
             isRaging = false;
+            Strength = 3;
+            WeaponDamage = 41;
+        }
+
+        public int weaponAttack()
+        {
+            return (BaseAttack() + WeaponDamage)* Strength;
         }
 
         public void shield(Character target) { }
@@ -52,11 +67,29 @@ namespace InheritanceBeginnings
 
     public class Healer : Character 
     {
-        public void Heal (Character target) { }
+        public Healer (string name) : base(name) { }
+        public void Heal (Character target)  { }
     }
 
-    public class Mage : Character 
+    public class Mage : Character
     {
-        public int Mana;
+        public int Mana { get; set; }
+
+        public int MagicDmg {  get; set; }
+        public Mage(string name) : base(name) {
+            Mana = 1;
+            MagicDmg = 2; 
+
+        }
+
+        public int MagicAttack()
+        {
+            if (Mana < 10)
+                return 0;
+
+
+            return MagicDmg + BaseDmg * Level;
+        }
+
     }
 }
