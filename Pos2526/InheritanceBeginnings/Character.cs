@@ -47,8 +47,8 @@ namespace InheritanceBeginnings
     public class Fighter : Character 
     {
         public bool isRaging {  get; set; }
-        public int Strength { get; set;}
-        public int WeaponDamage { get; set;}
+        protected int Strength { get; set;}
+        protected int WeaponDamage { get; set;}
 
         public Fighter(string name) : base(name)
         {
@@ -59,7 +59,14 @@ namespace InheritanceBeginnings
 
         public int weaponAttack()
         {
-            return (BaseAttack() + WeaponDamage)* Strength;
+            int damage = (BaseAttack() + WeaponDamage) * Strength;
+            
+            if (isRaging)
+            {
+                damage *= 2;
+            }
+            
+            return damage;
         }
 
         public void shield(Character target) { }
