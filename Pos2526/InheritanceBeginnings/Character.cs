@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace InheritanceBeginnings
 {
@@ -15,7 +9,7 @@ namespace InheritanceBeginnings
 
         protected Skilltree Skilltree;
 
-        protected  String Hp { get; set; }
+        public String Hp { get; private set; }
 
 
         protected int BaseDmg { get; set; }
@@ -42,13 +36,21 @@ namespace InheritanceBeginnings
             Level += xp;
         }
 
+        public void GetHeal(int heal)
+        {
+            Hp += heal;
+            Console.WriteLine($"{Name} healed, current Hp {Hp}");
+        }
+
+
+
     }
 
-    public class Fighter : Character 
+    public class Fighter : Character
     {
-        public bool isRaging {  get; set; }
-        protected int Strength { get; set;}
-        protected int WeaponDamage { get; set;}
+        protected bool isRaging { get; set; }
+        protected int Strength { get; set; }
+        protected int WeaponDamage { get; set; }
 
         public Fighter(string name) : base(name)
         {
@@ -60,32 +62,40 @@ namespace InheritanceBeginnings
         public int weaponAttack()
         {
             int damage = (BaseAttack() + WeaponDamage) * Strength;
-            
+
             if (isRaging)
             {
                 damage *= 2;
             }
-            
+
             return damage;
         }
 
         public void shield(Character target) { }
     }
-
-    public class Healer : Character 
+    public class Healer : Character
     {
-        public Healer (string name) : base(name) { }
-        public void Heal (Character target)  { }
+        public Healer(string name) : base(name) { }
+        public void Heal(Character target)
+        {
+
+            int h = 3 * Level;
+
+            target.GetHeal(h);
+
+        }
+
     }
 
     public class Mage : Character
     {
         public int Mana { get; set; }
 
-        public int MagicDmg {  get; set; }
-        public Mage(string name) : base(name) {
+        public int MagicDmg { get; set; }
+        public Mage(string name) : base(name)
+        {
             Mana = 1;
-            MagicDmg = 2; 
+            MagicDmg = 2;
 
         }
 
