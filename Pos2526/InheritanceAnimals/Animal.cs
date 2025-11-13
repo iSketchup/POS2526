@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InheritanceAnimals
 {
-    public class Animal
+    public abstract class Animal
     {
         protected int Id  { get; private set; }
 
@@ -18,11 +18,9 @@ namespace InheritanceAnimals
             Id = id;
         }
 
-        public virtual void makeSound()
-        {
-            Console.WriteLine("hi");
+        public abstract void makeSound();
         }
-    }
+    
 
     public class Dog : Animal
     {
